@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="columns is-vcentered">
+    <div class="login column is-4 ">
+      <section class="section">
+        <div class="has-text-centered">
+            <img class="login-logo" src="https://cdn.worldvectorlogo.com/logos/statalog.svg">
+        </div>
+
+        {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
+      
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+        {% else %}
+          <p>Please login to see this page.</p>
+        {% endif %}
+      {% endif %}
+      
+      <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+        <div class="field">
+          <label class="label">{{ form.username.label_tag }}</label>
+          <!-- Pretty Bulma Field-->
+          <div class="control has-icons-right">
+            <input class="input" type="text">
+            <span class="icon is-small is-right">
+              <i class="fa fa-user"></i>
+            </span>
+          </div>
+          {{ form.username }} <!-- Ugly Django Field-->
+        </div>
+        <div class="field">
+          <label class="label">{{ form.password.label_tag }}</label>
+          <div class="control has-icons-right">
+            <input class="input" type="password">
+            <span class="icon is-small is-right">
+              <i class="fa fa-key"></i>
+            </span>
+          </div>
+          {{ form.password }}
+        </div>
+        <div class="has-text-centered">
+          <a class="button is-vcentered is-primary is-outlined">Login</a>
+        </div>
+        <input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+        <div class="has-text-centered">
+          <a href="{{ 'signup' }}"> Don't you have an account? Sign up now!</a>
+        </div>
+        <!-- Assumes you setup the password_reset view in your URLconf
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p> -->
+      </section>
+    </div>
+    <div id="particles-js" class="interactive-bg column is-8">
+    </div>
+  </div>
+  
+
+{% endblock %}

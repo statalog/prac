@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+
+</br>
+<div class="columns">
+    <div class="column">
+        <h2 class="title is-3">See</h2>
+            <h4 class="subtitle is-5">recently uploaded studies</h4>
+            {% if latest_research_list %}
+            {% for research in latest_research_list %}
+                    <div class="box">
+                        <div class="tags are-medium">    
+                            <span class="tag is-light">🌍🌎🌏 Climate </span>
+                            <span class="tag is-info">🤓📖 Peer-Reviewed</span>
+                        </div>          
+                        <div class="media-content">
+                            <p class="title is-4">{{ research.title|truncatewords:"14" }}</p>
+                        </div>
+                        <div class="content">
+                            {{ research.description|truncatewords:"34" }}
+                        </div>
+                        <span class="tag is-primary">
+                            <a href="{% url 'research:detail' research.id %}" class="has-text-white">read more...</a></span>
+                    </div>
+        
+            {% endfor %}
+        {% else %}
+            <p>OMG! No research available!</p>
+        {% endif %}
+    </div>
+
+
+    <div class="column">
+        <h2 class="title is-3">Discover</h2>
+            <h4 class="subtitle is-5">studies others haven't seen yet</h4>
+            <p>(🛠Coming Soon🛠)</p>
+            
+            <div class="box">
+                    <div class="tags are-medium">
+                                
+                            <span class="tag is-dark">Example</span>
+                            <span class="tag is-warning"> Example </span>
+                            <span class="tag is-light">🌳🌲🎋🌴 Plants</span>
+                        </div>
+                <div class="media-content">
+                    <p class="title is-4">title {{ research.title|truncatewords:"14" }}</p>
+                    <p class="subtitle is-6">description {{ research.attr }}</p>
+                </div>
+            </div>
+
+            <div class="box">
+                    <div class="tags are-medium">
+                                
+                            <span class="tag is-link">Example</span>
+                            <span class="tag is-danger"> Example </span>
+                            <span class="tag is-light">☀️⛅️⛈ Weather</span>
+                        </div>
+                <div class="media-content">
+                    <p class="title is-4">title {{ research.title|truncatewords:"14" }}</p>
+                    <p class="subtitle is-6">description {{ research.attr }}</p>
+                </div>
+            </div>
+
+            <div class="box">
+                    <div class="tags are-medium">
+                                
+                            <span class="tag is-warning">Example</span>
+                            <span class="tag is-info"> Example </span>
+                            <span class="tag is-light">♻️🌱🍃 Sustainability</span>
+                        </div>
+                <div class="media-content">
+                    <p class="title is-4">title {{ research.title|truncatewords:"14" }}</p>
+                    <p class="subtitle is-6">description {{ research.attr }}</p>
+                </div>
+            </div>
+
+            <div class="box">
+                    <div class="tags are-medium">
+                                
+                            <span class="tag is-black">Example</span>
+                            <span class="tag is-success">❕ Featured</span>
+                            <span class="tag is-light">💧🌊 Water</span>
+                        </div>
+                <div class="media-content">
+                    <p class="title is-4">research.title {{ research.title }}</p>
+                    <p class="subtitle is-6">research.description {{ research.attr }}</p>
+                </div>
+            </div>
+
+    </div>
+
+            <div class="column">
+                    <h2 class="title is-3">Validate</h2>
+                    <h4 class="subtitle is-5">inferences made by our community</h4>
+                    <p>(🛠Coming Soon🛠)</p>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+{% endblock %}

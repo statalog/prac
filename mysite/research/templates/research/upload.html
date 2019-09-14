@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<h1 class="title is-1">Upload</h1>
+<p>(🛠Coming Soon🛠)</p>
+
+<div class="field">
+    <div class="file is-large is-boxed has-name">
+      <label class="file-label">
+        <input class="file-input" type="file" name="resume">
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Find your file
+          </span>
+        </span>
+        <span class="file-name">
+          file name shows here
+        </span>
+      </label>
+
+    
+<a href="{% url 'research:upload' %}">Add more?</a>
+
+{% endblock %}
